@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>学生管理系统</title>
+    <!-- 引入css样式 -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- 引入bootstrap -->
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <script src="./jquery.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="bigBox">
+      <div class="boxTop">
+        <i></i>
+        <h2>学生管理系统</h2>
+        <button class="quit">退出</button>
+      </div>
+      <div class="content">
+        <div class="sidebar">
+          <p class="sid on">信息管理</p>
+          <p class="sid">账户管理</p>
+          <p class="sid">系统设置</p>
+        </div>
+        <div class="contBox">
+          <div class="container">
+            <!-- 顶部搜索框和添加按钮 -->
+            <div class="row">
+              <div class="topbox" style="width: 60%">
+                <form
+                  class="bs-example bs-example-form"
+                  role="form"
+                  style="float: left; width: 50%"
+                >
+                  <div class="input-group">
+                    <input type="text" class="form-control ss" />
+                    <span class="input-group-addon search"
+                      ><span class="glyphicon glyphicon-search"></span
+                    ></span>
+                  </div>
+                  <br />
+                </form>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#myModal"
+                  style="float: left; margin-left: 50px"
+                >
+                  添加信息
+                </button>
+              </div>
+            </div>
+            <!-- 信息展示 -->
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>姓名</th>
+                  <th>性别</th>
+                  <th>年龄</th>
+                  <th>籍贯</th>
+                  <th>身份证号</th>
+                  <th>邮箱</th>
+                  <th>联系方式</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <!-- 添加模态框 -->
+            <div
+              class="modal fade"
+              id="myModal"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="myModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-hidden="true"
+                    >
+                      &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">用户信息</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                      <!-- 姓名 -->
+                      <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label"
+                          >姓名</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="username"
+                            placeholder="请输入姓名"
+                          />
+                        </div>
+                      </div>
+                      <!-- 密码 -->
+                      <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label"
+                          >密码</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            placeholder="请输入密码"
+                          />
+                        </div>
+                      </div>
+                      <!-- 性别 -->
+                      <div class="form-group">
+                        <label for="sex" class="col-sm-2 control-label"
+                          >性别</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="sex"
+                            placeholder="请输入性别"
+                          />
+                        </div>
+                      </div>
+                      <!-- 年龄 -->
+                      <div class="form-group">
+                        <label for="age" class="col-sm-2 control-label"
+                          >年龄</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="age"
+                            placeholder="请输入年龄"
+                          />
+                        </div>
+                      </div>
+                      <!-- 籍贯 -->
+                      <div class="form-group">
+                        <label for="natives" class="col-sm-2 control-label"
+                          >籍贯</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="natives"
+                            placeholder="请输入籍贯"
+                          />
+                        </div>
+                      </div>
+                      <!-- 身份证号 -->
+                      <div class="form-group">
+                        <label for="identity" class="col-sm-2 control-label"
+                          >身份证号</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="identity"
+                            placeholder="请输入身份证号码"
+                          />
+                        </div>
+                      </div>
+                      <!-- 邮箱 -->
+                      <div class="form-group">
+                        <label for="mailbox" class="col-sm-2 control-label"
+                          >邮箱</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="mailbox"
+                            placeholder="请输入邮箱"
+                          />
+                        </div>
+                      </div>
+                      <!-- 联系方式 -->
+                      <div class="form-group">
+                        <label for="phone" class="col-sm-2 control-label"
+                          >联系方式</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="phone"
+                            placeholder="请输入联系方式"
+                          />
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-default"
+                      data-dismiss="modal"
+                    >
+                      关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" id="affire">
+                      确认
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 修改模特框 -->
+            <div
+              class="modal fade"
+              id="myModal1"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="myModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-hidden="true"
+                    >
+                      &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">信息修改</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                      <!-- 姓名 -->
+                      <div class="form-group">
+                        <label for="username1" class="col-sm-2 control-label"
+                          >姓名</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="username1"
+                            disabled
+                            placeholder="请输入姓名"
+                          />
+                        </div>
+                      </div>
+                      <!-- 性别 -->
+                      <div class="form-group">
+                        <label for="sex1" class="col-sm-2 control-label"
+                          >性别</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="sex1"
+                            disabled
+                            placeholder="请输入性别"
+                          />
+                        </div>
+                      </div>
+                      <!-- 年龄 -->
+                      <div class="form-group">
+                        <label for="age1" class="col-sm-2 control-label"
+                          >年龄</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="age1"
+                            placeholder="请输入年龄"
+                          />
+                        </div>
+                      </div>
+                      <!-- 籍贯 -->
+                      <div class="form-group">
+                        <label for="natives1" class="col-sm-2 control-label"
+                          >籍贯</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="natives1"
+                            placeholder="请输入籍贯"
+                          />
+                        </div>
+                      </div>
+                      <!-- 身份证号 -->
+                      <div class="form-group">
+                        <label for="identity1" class="col-sm-2 control-label"
+                          >身份证号</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="identity1"
+                            disabled
+                            placeholder="请输入身份证号码"
+                          />
+                        </div>
+                      </div>
+                      <!-- 邮箱 -->
+                      <div class="form-group">
+                        <label for="mailbox1" class="col-sm-2 control-label"
+                          >邮箱</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="mailbox1"
+                            placeholder="请输入邮箱"
+                          />
+                        </div>
+                      </div>
+                      <!-- 联系方式 -->
+                      <div class="form-group">
+                        <label for="phone1" class="col-sm-2 control-label"
+                          >联系方式</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="phone1"
+                            placeholder="请输入联系方式"
+                          />
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-default"
+                      data-dismiss="modal"
+                    >
+                      关闭
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      id="affire1"
+                      data-dismiss="modal"
+                    >
+                      确认修改
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./page.js"></script>
+</html>
