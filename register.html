@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>注册页面</title>
+    <style>
+      body {
+        background-color: lightcyan;
+      }
+      h2 {
+        font-size: 40px;
+        margin-left: 500px;
+        margin-top: 150px;
+      }
+      #username,
+      #password {
+        width: 600px;
+        height: 25px;
+        outline: none;
+        border-radius: 15px;
+        margin-top: 20px;
+        margin-left: 500px;
+      }
+
+      button {
+        width: 150px;
+        height: 30px;
+        margin-top: 30px;
+        margin-left: 500px;
+        border-radius: 10px;
+        outline: none;
+        color: white;
+        background-color: cornflowerblue;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>注册</h2>
+    <input
+      type="text"
+      name="username"
+      id="username"
+      placeholder="请输入手机号"
+    />
+    <input type="text" name="password" id="password" placeholder="请输入密码" />
+    <br />
+    <button>注册</button>
+  </body>
+  <script src="./jquery.js"></script>
+  <script>
+    //点击按钮时，将input框中输入的信息发送到后台
+    $("button").on("click", () => {
+      var num = $("#username").val();
+      var str = /^\d{11}$/;
+      if (str.test(num)) {
+        $.get(
+          "http://localhost:6060/register",
+          {username: $("#username").val(), password: $("#password").val()},
+          function (res) {
+            if (res == "注册成功") {
+              window.location.href = "./login.html";
+            }
+            if (res.status == false) {
+              alert(res.msg);
+              window.location.href = "./login.html";
+            }
+          }
+        );
+      } else {
+        alert("请输入正确的手机号");
+      }
+      $("#username").val("");
+      $("#password").val("");
+    });
+  </script>
+</html>
